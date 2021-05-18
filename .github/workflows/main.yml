@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-        run: npm ci
+      - run: npm ci
       - name: Lint
         run: npx eslint --ext .js,.jsx src tests
       - name: Run unit tests
@@ -27,7 +27,7 @@ jobs:
           npm run build
           cp dist/index.html dist/404.html
       - name: Run E2E tests
-        run: npm run test:e2e
+        run: npm run test
         env:
           HEADLESS: true
       - name: Deploy
