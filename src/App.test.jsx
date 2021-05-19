@@ -27,7 +27,7 @@ describe('App', () => {
   it('renders title of landing page', () => {
     render(<App />);
 
-    expect(screen.getByText('Taklendar'));
+    expect(screen.getByText('Taklendar')).toBeInTheDocument();
   });
 
   it('renders current Month and Year', () => {
@@ -35,6 +35,6 @@ describe('App', () => {
 
     const { month, year } = getCurrnetDate();
 
-    expect(screen.getByText(`${month}/${year}`));
+    expect(screen.getByText(`${month}/${year}`)).toBeInTheDocument();
   });
 });
