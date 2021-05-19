@@ -1,1 +1,1 @@
-export default ['Sunday', 'Monday', 'Tuesday', 'Thursday', 'Friday', 'Saturday'];
+export default ['Sunday', 'Monday', 'Tuesday', 'Wedneday', 'Thursday', 'Friday', 'Saturday'];
