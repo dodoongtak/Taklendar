@@ -10,6 +10,7 @@ const { actions, reducer } = createSlice({
       Year: undefined,
     },
     calendarDate: [],
+    clickedDate: '',
   },
   reducers: {
     setCurrentDate(state) {
@@ -34,12 +35,20 @@ const { actions, reducer } = createSlice({
         calendarDate,
       };
     },
+
+    setClickedDate(state, { payload: date }) {
+      return {
+        ...state,
+        clickedDate: date,
+      };
+    },
   },
 });
 
 export const {
   setCurrentDate,
   setCalendarDate,
+  setClickedDate,
 } = actions;
 
 export default reducer;

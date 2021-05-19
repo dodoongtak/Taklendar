@@ -2,18 +2,18 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-const WeekWrapper = styled.div({
+const WeekList = styled.ul({
   display: 'grid',
-  gridTemplate: 'repeat(auto-fill, 100px) / repeat(7, 1fr)',
-
-  '& span': {
-    display: 'block',
-    margin: '0 auto',
-    padding: '0.5rem',
-  },
+  gridTemplate: 'repeat(auto-fill, 130px) / repeat(7, 1fr)',
 });
 
-export default function Dates({ dates }) {
+const WeekItem = styled.li({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+export default function Dates({ dates, onClickDate }) {
   if (!dates) {
     return (
       <span>
@@ -21,17 +21,21 @@ export default function Dates({ dates }) {
       </span>
     );
   }
-
   return (
     <section>
       {dates.map((week) => (
-        <WeekWrapper key={week[0].id}>
+        <WeekList key={week[0].id}>
           {week.map(({ date }) => (
-            <span key={date}>
-              {date.split('/')[1]}
-            </span>
+            <WeekItem
+              key={date}
+              onClick={() => onClickDate(date)}
+            >
+              <span>
+                {date.split('/')[1]}
+              </span>
+            </WeekItem>
           ))}
-        </WeekWrapper>
+        </WeekList>
       ))}
     </section>
   );

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setCalendarDate } from '../redux/appSlice';
+import { setCalendarDate, setClickedDate } from '../redux/appSlice';
 
 import { get } from '../utils';
 
@@ -17,7 +17,14 @@ export default function DatesContainer() {
 
   const dates = useSelector(get('calendarDate'));
 
+  const handleClickDate = useCallback((date) => {
+    dispatch(setClickedDate(date));
+  }, [dispatch]);
+
   return (
-    <Dates dates={dates} />
+    <Dates
+      dates={dates}
+      onClickDate={handleClickDate}
+    />
   );
 }
