@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { render, screen } from '@testing-library/react';
 
-import { getCurrnetDate } from './utils';
+import { getCurrnetDate } from '../utils';
 
-import App from './App';
+import CurrentDateContainer from './CurrentDateContainer';
 
-describe('App', () => {
+describe('CurrentDateContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -24,16 +24,14 @@ describe('App', () => {
     }));
   });
 
-  it('renders title of landing page', () => {
-    render(<App />);
-
-    expect(screen.getByText('Taklendar'));
-  });
-
   it('renders current Month and Year', () => {
-    render(<App />);
+    render(<CurrentDateContainer />);
 
     const { month, year } = getCurrnetDate();
+
+    expect(dispatch).toBeCalledWith({
+      type: 'applications/setCurrentDate',
+    });
 
     expect(screen.getByText(`${month}/${year}`));
   });
