@@ -12,6 +12,6 @@ describe('CurrentDate', () => {
       />
     ));
 
-    expect(screen.getByText('5/2021'));
+    expect(screen.getByText('5/2021')).toBeInTheDocument();
   });
 });
