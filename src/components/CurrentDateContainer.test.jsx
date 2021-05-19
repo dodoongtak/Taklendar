@@ -2,9 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { render, screen } from '@testing-library/react';
-
-import { getCurrnetDate } from '../utils';
+import { render } from '@testing-library/react';
 
 import CurrentDateContainer from './CurrentDateContainer';
 
@@ -24,15 +22,11 @@ describe('CurrentDateContainer', () => {
     }));
   });
 
-  it('renders current Month and Year', () => {
+  it('executes dispatch setCurrentDate', () => {
     render(<CurrentDateContainer />);
-
-    const { month, year } = getCurrnetDate();
 
     expect(dispatch).toBeCalledWith({
       type: 'applications/setCurrentDate',
     });
-
-    expect(screen.getByText(`${month}/${year}`));
   });
 });
