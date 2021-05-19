@@ -1,6 +1,7 @@
 import React from 'react';
 
 import CurrentDateContainer from './components/CurrentDateContainer';
+import Calendar from './components/Calendar';
 
 export default function App() {
   return (
@@ -9,6 +10,10 @@ export default function App() {
         Taklendar
       </h1>
       <CurrentDateContainer />
+
+      <main>
+        <Calendar />
+      </main>
     </>
   );
 }
