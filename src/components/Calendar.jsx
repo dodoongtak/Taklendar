@@ -12,6 +12,7 @@ const WeekdaysList = styled.ul({
 });
 
 const WeekdaysItem = styled.li({
+  margin: '0 auto',
   padding: '0.5rem',
 });
 
