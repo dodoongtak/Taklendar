@@ -6,7 +6,7 @@ import { render, screen } from '@testing-library/react';
 
 import { getCurrnetDate } from './utils';
 
-import WEEKDAY from './fixtures';
+import { WEEKDAY } from './fixtures';
 
 import App from './App';
 
@@ -23,6 +23,7 @@ describe('App', () => {
         month: '5',
         year: '2021',
       },
+      calendarDate: [],
     }));
   });
 

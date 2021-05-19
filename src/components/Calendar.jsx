@@ -2,7 +2,9 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import WEEKDAY from '../fixtures';
+import { WEEKDAY } from '../fixtures';
+
+import DatesContainer from './DatesContainer';
 
 const WeekdaysList = styled.ul({
   display: 'grid',
@@ -25,6 +27,8 @@ export default function Calendar() {
           ))}
         </WeekdaysList>
       </header>
+
+      <DatesContainer />
     </article>
   );
 }

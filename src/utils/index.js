@@ -1,1 +1,5 @@
-export { getCurrnetDate, get } from './utils';
+export {
+  get,
+  getCurrnetDate,
+  getDatesOfCalendar,
+} from './utils';
