@@ -6,6 +6,8 @@ import { render, screen } from '@testing-library/react';
 
 import { getCurrnetDate } from './utils';
 
+import WEEKDAY from './fixtures';
+
 import App from './App';
 
 describe('App', () => {
@@ -36,5 +38,13 @@ describe('App', () => {
     const { month, year } = getCurrnetDate();
 
     expect(screen.getByText(`${month}/${year}`)).toBeInTheDocument();
+  });
+
+  it('renders weekdays', () => {
+    render(<App />);
+
+    WEEKDAY.forEach((DAY) => {
+      expect(screen.getByText(DAY)).toBeInTheDocument();
+    });
   });
 });
