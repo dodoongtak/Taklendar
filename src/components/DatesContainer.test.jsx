@@ -2,7 +2,9 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+
+import { DATES } from '../fixtures';
 
 import DatesContainer from './DatesContainer';
 
@@ -19,6 +21,7 @@ describe('DatesContainer', () => {
         month: '5',
         year: '2021',
       },
+      calendarDate: DATES,
     }));
   });
 
@@ -27,6 +30,17 @@ describe('DatesContainer', () => {
 
     expect(dispatch).toBeCalledWith({
       type: 'applications/setCalendarDate',
+    });
+  });
+
+  it('excutes dispatch setClickedDate upon clicking date', () => {
+    render(<DatesContainer />);
+
+    fireEvent.click(screen.getByText('24'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'applications/setClickedDate',
+      payload: '5/24/2021',
     });
   });
 });
