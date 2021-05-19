@@ -1,14 +1,62 @@
+import { WEEKDAY } from '../fixtures';
+
 export function get(key) {
   return (obj) => obj[key];
 }
 
 export function getCurrnetDate() {
   const date = new Date();
-  const month = date.getMonth() + 1;
+  const month = date.getMonth();
   const year = date.getFullYear();
 
   return {
-    month,
+    month: month + 1,
     year,
   };
+}
+
+export function convertDateToString(date) {
+  return date.toLocaleDateString('en-us', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  });
+}
+
+export function getPaddingDays(edge) {
+  const paddingDays = convertDateToString(edge);
+
+  return WEEKDAY.indexOf(paddingDays.split(', ')[0]);
+}
+
+export function getDatesOfCalendar({ startDayOfMonth, endDayOfMonth }) {
+  const date = new Date();
+  const month = date.getMonth();
+  const year = date.getFullYear();
+
+  const previousDays = getPaddingDays(startDayOfMonth);
+  const nextDays = 6 - getPaddingDays(endDayOfMonth);
+
+  let calendar = [];
+  const twoDiemensionalCalendar = [];
+
+  const totalDays = previousDays + endDayOfMonth.getDate() + nextDays;
+
+  for (let i = 1; i <= totalDays; i += 1) {
+    const dateString = convertDateToString(new Date(year, month, i - previousDays));
+
+    calendar = [...calendar, {
+      id: i,
+      date: dateString.split(', ')[1],
+      day: dateString.split(', ')[0],
+      tasks: [],
+    }];
+  }
+
+  while (calendar.length > 0) {
+    twoDiemensionalCalendar.push(calendar.splice(0, 7));
+  }
+
+  return twoDiemensionalCalendar;
 }

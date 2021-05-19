@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getCurrnetDate } from '../utils';
+import { getCurrnetDate, getDatesOfCalendar } from '../utils';
 
 const { actions, reducer } = createSlice({
   name: 'applications',
@@ -9,6 +9,7 @@ const { actions, reducer } = createSlice({
       Month: undefined,
       Year: undefined,
     },
+    calendarDate: [],
   },
   reducers: {
     setCurrentDate(state) {
@@ -19,11 +20,26 @@ const { actions, reducer } = createSlice({
         currentDate,
       };
     },
+
+    setCalendarDate(state) {
+      const { month, year } = state.currentDate;
+
+      const calendarDate = getDatesOfCalendar({
+        startDayOfMonth: new Date(year, month - 1, 1),
+        endDayOfMonth: new Date(year, month, 0),
+      });
+
+      return {
+        ...state,
+        calendarDate,
+      };
+    },
   },
 });
 
 export const {
   setCurrentDate,
+  setCalendarDate,
 } = actions;
 
 export default reducer;
