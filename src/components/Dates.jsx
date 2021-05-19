@@ -7,6 +7,8 @@ const WeekWrapper = styled.div({
   gridTemplate: 'repeat(auto-fill, 100px) / repeat(7, 1fr)',
 
   '& span': {
+    display: 'block',
+    margin: '0 auto',
     padding: '0.5rem',
   },
 });
