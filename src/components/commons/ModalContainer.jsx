@@ -1,5 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setTasks } from '../../redux/appSlice';
 
 import { get } from '../../utils';
 
@@ -8,7 +10,22 @@ import Modal from './Modal';
 export default function ModalContainer() {
   const clikcedDate = useSelector(get('clickedDate'));
 
+  const dispatch = useDispatch();
+
+  const [task, setTaskTitle] = useState('');
+
+  const handleSubmit = useCallback((event) => {
+    event.preventDefault();
+
+    dispatch(setTasks(task));
+  }, [task]);
+
   return (
-    <Modal date={clikcedDate} />
+    <Modal
+      date={clikcedDate}
+      task={task}
+      setTaskTitle={setTaskTitle}
+      onSubmit={handleSubmit}
+    />
   );
 }
