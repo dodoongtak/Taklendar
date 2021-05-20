@@ -18,6 +18,8 @@ export default function ModalContainer() {
     event.preventDefault();
 
     dispatch(setTasks(task));
+
+    setTaskTitle('');
   }, [task]);
 
   return (
