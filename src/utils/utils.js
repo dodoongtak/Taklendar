@@ -4,6 +4,10 @@ export function get(key) {
   return (obj) => obj[key];
 }
 
+export function equal(key, value) {
+  return (obj) => obj[key] === value;
+}
+
 export function getCurrnetDate() {
   const date = new Date();
   const month = date.getMonth();
@@ -30,6 +34,15 @@ export function getPaddingDays(edge) {
   return WEEKDAY.indexOf(paddingDays.split(', ')[0]);
 }
 
+export function convertTo2DArray(lists, index) {
+  const twoDiemensionalArray = [];
+  while (lists.length > 0) {
+    twoDiemensionalArray.push(lists.splice(0, index));
+  }
+
+  return twoDiemensionalArray;
+}
+
 export function getDatesOfCalendar({ startDayOfMonth, endDayOfMonth }) {
   const date = new Date();
   const month = date.getMonth();
@@ -39,7 +52,6 @@ export function getDatesOfCalendar({ startDayOfMonth, endDayOfMonth }) {
   const nextDays = 6 - getPaddingDays(endDayOfMonth);
 
   let calendar = [];
-  const twoDiemensionalCalendar = [];
 
   const totalDays = previousDays + endDayOfMonth.getDate() + nextDays;
 
@@ -54,9 +66,5 @@ export function getDatesOfCalendar({ startDayOfMonth, endDayOfMonth }) {
     }];
   }
 
-  while (calendar.length > 0) {
-    twoDiemensionalCalendar.push(calendar.splice(0, 7));
-  }
-
-  return twoDiemensionalCalendar;
+  return convertTo2DArray(calendar, 7);
 }

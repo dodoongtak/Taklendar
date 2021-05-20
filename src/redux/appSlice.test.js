@@ -2,7 +2,10 @@ import reducer, {
   setCurrentDate,
   setCalendarDate,
   setClickedDate,
+  setTasks,
 } from './appSlice';
+
+import { equal } from '../utils';
 
 import { DATES } from '../fixtures';
 
@@ -53,5 +56,26 @@ describe('setClickedDate', () => {
     const state = reducer(initialState, setClickedDate('5/9/2021'));
 
     expect(state.clickedDate).toBe('5/9/2021');
+  });
+});
+
+describe('setTasks', () => {
+  it('sets tasks into clicked date', () => {
+    const initialState = {
+      currentDate: {
+        month: 4,
+        year: 2021,
+      },
+      calendarDate: DATES,
+      clickedDate: '5/20/2021',
+    };
+
+    const state = reducer(initialState, setTasks('Work Out'));
+
+    const clickedDate = state.calendarDate
+      .flat()
+      .find(equal('date', initialState.clickedDate));
+
+    expect(clickedDate.tasks).toHaveLength(1);
   });
 });
