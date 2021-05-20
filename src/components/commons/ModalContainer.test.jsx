@@ -37,4 +37,15 @@ describe('ModalContainer', () => {
       payload: 'Work Out',
     });
   });
+
+  it('excutes dispatch setClickedDate upon clicking confirm', () => {
+    render(<ModalContainer />);
+
+    fireEvent.click(screen.getByText('Confirm'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'applications/setClickedDate',
+      payload: '',
+    });
+  });
 });

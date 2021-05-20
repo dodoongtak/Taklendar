@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 import CurrentDateContainer from './components/CurrentDateContainer';
 import Calendar from './components/Calendar';
+import ModalContainer from './components/commons/ModalContainer';
 
 const PageWrapper = styled.div({
   display: 'grid',
@@ -30,6 +31,8 @@ export default function App() {
       <main>
         <Calendar />
       </main>
+
+      <ModalContainer />
     </PageWrapper>
   );
 }

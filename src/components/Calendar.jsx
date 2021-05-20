@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 import { WEEKDAY } from '../fixtures';
 
 import DatesContainer from './DatesContainer';
-import ModalContainer from './commons/ModalContainer';
 
 const WeekdaysList = styled.ul({
   display: 'grid',
@@ -31,8 +30,6 @@ export default function Calendar() {
       </header>
 
       <DatesContainer />
-
-      <ModalContainer />
     </article>
   );
 }
