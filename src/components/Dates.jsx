@@ -11,6 +11,20 @@ const WeekItem = styled.li({
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
+
+  '$ header': {
+    padding: '0.2rem',
+  },
+});
+
+const Task = styled.div({
+  width: '100%',
+  marginBottom: '0.2rem',
+  padding: '0.2rem',
+
+  color: '#FFF',
+
+  backgroundColor: '#FF8A3D',
 });
 
 export default function Dates({ dates, onClickDate }) {
@@ -30,15 +44,16 @@ export default function Dates({ dates, onClickDate }) {
               key={date}
               onClick={() => onClickDate(date)}
             >
-              <span>
+              <header>
                 {date.split('/')[1]}
-              </span>
+              </header>
               {tasks.length && (
                 tasks.map((task) => (
-                  <p key={new Date()}>{task}</p>
+                  <Task key={new Date()}>
+                    <p>{task}</p>
+                  </Task>
                 ))
               )}
-
             </WeekItem>
           ))}
         </WeekList>
