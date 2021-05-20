@@ -25,7 +25,7 @@ export default function Dates({ dates, onClickDate }) {
     <section>
       {dates.map((week) => (
         <WeekList key={week[0].id}>
-          {week.map(({ date }) => (
+          {week.map(({ date, tasks }) => (
             <WeekItem
               key={date}
               onClick={() => onClickDate(date)}
@@ -33,6 +33,12 @@ export default function Dates({ dates, onClickDate }) {
               <span>
                 {date.split('/')[1]}
               </span>
+              {tasks.length && (
+                tasks.map((task) => (
+                  <p key={new Date()}>{task}</p>
+                ))
+              )}
+
             </WeekItem>
           ))}
         </WeekList>

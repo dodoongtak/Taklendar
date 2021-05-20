@@ -14,6 +14,12 @@ describe('Calendar', () => {
       expect(screen.getByText(/13/)).toBeInTheDocument();
       expect(screen.getByText(/14/)).toBeInTheDocument();
     });
+
+    it('renders the tasks', () => {
+      render(<Dates dates={DATES} />);
+
+      expect(screen.getByText('timeblocks inteview')).toBeInTheDocument();
+    });
   });
 
   context('without dates', () => {
