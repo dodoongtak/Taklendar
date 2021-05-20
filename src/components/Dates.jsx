@@ -10,11 +10,17 @@ const WeekList = styled.ul({
 const WeekItem = styled.li({
   width: '100%',
   display: 'flex',
+  flexDirection: 'column',
   justifyContent: 'center',
 
   '$ header': {
     padding: '0.2rem',
   },
+});
+
+const TaskWrapper = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
 });
 
 const Task = styled.div({
@@ -47,12 +53,15 @@ export default function Dates({ dates, onClickDate }) {
               <header>
                 {date.split('/')[1]}
               </header>
-              {tasks.length && (
-                tasks.map((task) => (
-                  <Task key={new Date()}>
-                    <p>{task}</p>
-                  </Task>
-                ))
+
+              {tasks.length > 0 && (
+                <TaskWrapper>
+                  {tasks.map((task) => (
+                    <Task key={new Date()}>
+                      <p>{task}</p>
+                    </Task>
+                  ))}
+                </TaskWrapper>
               )}
             </WeekItem>
           ))}
