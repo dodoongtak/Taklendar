@@ -9,18 +9,19 @@ const WeekList = styled.ul({
 
 const WeekItem = styled.li({
   width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
 
-  '$ header': {
+  overflow: 'hidden',
+
+  '& header': {
     padding: '0.2rem',
+    textAlign: 'center',
   },
 });
 
 const TaskWrapper = styled.div({
   display: 'flex',
   flexDirection: 'column',
+  padding: '0.2rem',
 });
 
 const Task = styled.div({
