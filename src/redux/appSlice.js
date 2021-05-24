@@ -6,6 +6,7 @@ import { convertTo2DArray } from '../utils/utils';
 const { actions, reducer } = createSlice({
   name: 'applications',
   initialState: {
+    id: 1,
     currentDate: {
       Month: undefined,
       Year: undefined,
@@ -47,14 +48,25 @@ const { actions, reducer } = createSlice({
     setTasks(state, { payload: task }) {
       const calendarDate = convertTo2DArray(state.calendarDate.flat().reduce((accu, curr) => {
         if (curr.date === state.clickedDate) {
-          return [...accu, { ...curr, tasks: [...curr.tasks, task] }];
+          return [
+            ...accu, {
+              ...curr,
+              tasks: [
+                ...curr.tasks,
+                {
+                  id: state.id,
+                  description: task,
+                }],
+            }];
         }
+
         return [...accu, curr];
       }, []), 7);
 
       return {
         ...state,
         calendarDate,
+        id: state.id + 1,
       };
     },
   },

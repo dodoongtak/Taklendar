@@ -23,9 +23,9 @@ export default function Tasks({ tasks }) {
     <>
       {tasks.length > 0 && (
         <TaskWrapper>
-          {tasks.map((task) => (
-            <Task key={new Date()}>
-              <p>{task}</p>
+          {tasks.map(({ id, description }) => (
+            <Task key={id}>
+              <p>{description}</p>
             </Task>
           ))}
         </TaskWrapper>

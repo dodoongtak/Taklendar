@@ -62,6 +62,7 @@ describe('setClickedDate', () => {
 describe('setTasks', () => {
   it('sets tasks into clicked date', () => {
     const initialState = {
+      id: 1,
       currentDate: {
         month: 4,
         year: 2021,
@@ -77,5 +78,7 @@ describe('setTasks', () => {
       .find(equal('date', initialState.clickedDate));
 
     expect(clickedDate.tasks).toHaveLength(1);
+
+    expect(clickedDate.tasks[0].id).toBe(1);
   });
 });
