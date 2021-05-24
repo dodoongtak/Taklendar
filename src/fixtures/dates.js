@@ -76,7 +76,7 @@ export default [
       id: 23, date: '5/17/2021', day: 'Monday', tasks: [],
     },
     {
-      id: 24, date: '5/18/2021', day: 'Tuesday', tasks: ['timeblocks inteview'],
+      id: 24, date: '5/18/2021', day: 'Tuesday', tasks: [{ id: 1, description: 'timeblocks inteview' }],
     },
     {
       id: 25, date: '5/19/2021', day: 'Wednesday', tasks: [],

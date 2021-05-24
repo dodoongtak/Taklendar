@@ -5,7 +5,16 @@ import { render, screen } from '@testing-library/react';
 import Tasks from './Tasks';
 
 describe('Tasks', () => {
-  const tasks = ['timeblocks inteview', 'Fabuolous'];
+  const tasks = [
+    {
+      id: 1,
+      description: 'timeblocks inteview',
+    },
+    {
+      id: 2,
+      description: 'Fabuolous',
+    },
+  ];
 
   it('renders tasks', () => {
     render(<Tasks tasks={tasks} />);
