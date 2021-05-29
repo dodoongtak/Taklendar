@@ -25,3 +25,15 @@ Scenario('See weekdays', ({ I }) => {
     I.see(day);
   });
 });
+
+Scenario('Add event on specific date', ({ I }) => {
+  I.amOnPage('/');
+
+  I.click({ xpath: '/html/body/div[1]/main/article/section/ul[4]/li[3]' });
+
+  I.fillField('task', 'coding coding');
+
+  I.click('Confirm');
+
+  I.see('coding coding');
+});
